@@ -2,32 +2,22 @@ package lesson2_Problem5;
 
 public class SecondMinVal {
 
-
-
-    public static  void main(String[] args){
-        String input = "2 21 3 45 0 12 18 6 3 1 0 22";
-        String[] parts = input.split(" ");
-        int[] nums = new int[parts.length];
-        for (int i = 0; i < parts.length; i++) {
-            nums[i] = Integer.parseInt(parts[i]);
-        }
+    public static void main(String[] args) {
+        int[] input = {2, 21, 3, 45, 0, 12, 18, 6, 3, 1, 0, 22};
 
         int min = Integer.MAX_VALUE;
         int secondMin = Integer.MAX_VALUE;
 
-        for(int num : nums){
-            if(num < min){
+        for (int j = 0; j < input.length; j++) {
+            if (input[j] < min) {
                 secondMin = min;
-            min = num;
-        } else if (num < secondMin && num != min) {
-            secondMin = num;
+                min = input[j];
+            } else if (input[j] < secondMin && input[j] != min) {
+                secondMin = input[j];
+            }
         }
 
-
-System.out.println("Min: " + min);
-System.out.println("Second Min: " + secondMin);
-
-
-}
+        System.out.println("Min: " + min);
+        System.out.println("Second Min: " + secondMin);
     }
 }
