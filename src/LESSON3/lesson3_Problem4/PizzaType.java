@@ -1,4 +1,4 @@
-package lesson3_Problem4;
+package LESSON3.lesson3_Problem4;
 
 public enum PizzaType {
     VEGGIE,
