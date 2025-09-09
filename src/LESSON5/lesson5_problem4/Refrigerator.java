@@ -1,6 +1,6 @@
 package LESSON5.lesson5_problem4;
 
-public class Refrigerator  {
+public class Refrigerator extends Electronics {
     private int temperature;
     public Refrigerator(int temperature) {
         this.temperature = temperature;

@@ -1,6 +1,6 @@
 package LESSON5.lesson5_problem4;
 
-public class Microwave {
+public class Microwave extends Electronics {
     private int powerLevel;
 
     public Microwave(int powerLevel) {

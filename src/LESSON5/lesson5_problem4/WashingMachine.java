@@ -1,6 +1,6 @@
 package LESSON5.lesson5_problem4;
 
-public class WashingMachine  {
+public class WashingMachine extends Electronics {
     private int loadCapacity;
 
     public WashingMachine(int loadCapacity) {
