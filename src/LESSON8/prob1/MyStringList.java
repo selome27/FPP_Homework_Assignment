@@ -1,5 +1,7 @@
 package LESSON8.prob1;
 
+import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
+import java.sql.ResultSet;
 import java.util.Arrays;
 
 public class MyStringList {
@@ -128,6 +130,7 @@ public class MyStringList {
 	}
 
 	public String toString() {
+		if(size == 0) return "[ ]";
 		StringBuilder sb = new StringBuilder("[");
 		for (int i = 0; i < size - 1; ++i) {
 			sb.append(strArray[i] + ", ");
@@ -146,13 +149,76 @@ public class MyStringList {
 		 */
 		return (size == 0);
 	}
-	
+	/**--------------------------HomeWork---------------------------------*/
+	public int indexOf(String s) {
+		if (strArray.length == 0 || s == null) return -1;
+		for (int i = 0; i < strArray.length - 1; i++) {
+			if (s.equals(strArray[i])) {
+				return i;
+			}
+		}
+		return -1;
+	}
+	public String removeAt(int index) {
+		if (strArray == null || strArray.length == 0) return null;
+		if (index < 0 || index > size-1) return null;
+		String r = strArray[index];
+		remove(r);
+		return r;
+	}
+	public void clear() {
+		if (strArray == null) return;
+		for (int i = 0; i < size; i++) {
+			strArray[i] = null;
+		}
+		size = 0;
+	}
+	public void set(int index, String s){
+		if(strArray == null || s == null) return ;
+		for(int i =0; i < size; i++){
+			if(i == index){
+				strArray[i] = s;
+			}
+		}
+	}
+	public boolean containsAll(MyStringList other){
+		if(strArray == null || other == null) return false;
+		for(int i = 0; i < other.size; i++){
+			if(this.find(other.strArray[i])){
+				return true;
+			}
+		}
+		return false;
+	}
+	public MyStringList subList(int start, int end){
+		MyStringList temp = new MyStringList();
+		if(strArray == null || start < 0 || end > size || start>=end) return null;
+		for(int i = start; i < end; i++){
+			temp.add(strArray[i]);
+		}
+		return temp;
+	}
+	/**--------------------------HomeWork---------------------------------*/
+
 	public static void main(String[] args) {
 		MyStringList l = new MyStringList();
 		l.add("Bob");
 		l.add("Steve");
 		l.add("Susan");
 		l.add("Mark");
+		MyStringList l2 = new MyStringList();
+		l.add("Bob");
+		l.add("Liya");
+		l.add("Tonya");
+		MyStringList l3 = new MyStringList();
+		l3.add("Tonya");
+		l3.add("Renuka");
+		l3.add("Tom");
+		l3.add("Mohanraj");
+		l3.add("Steve");
+		l3.add("Bob");
+		l3.add("Liya");
+
 		l.insert("Renuka", 4); // Position reached the length
 		l.insert("Mohanraj", 5); // Position reached the length
 		System.out.println(l);
@@ -168,5 +234,19 @@ public class MyStringList {
 		System.out.println(l.find("Susan"));
 		// String[] x = (String[]) l.clone();
 		// System.out.println(Arrays.toString(x));
+		System.out.println("----------------Home-Work---------------");
+		System.out.println(l);
+		System.out.println("Index of Susan-> " + l.indexOf("Susan"));
+		System.out.println("Index of Liya-> " + l.indexOf("Liya"));
+		System.out.println("Removed-> " + l.removeAt(2));
+		l.set(3,"Tom");
+		System.out.println("After set-> " + l);
+		System.out.println(l.containsAll(l2));
+		System.out.println(l.containsAll(l3));
+        MyStringList s = l.subList(0,3);
+		System.out.println("Sublist-> " + s);
+		l.clear();
+		System.out.println("Size after cleared-> " + l.size());
+		System.out.println(l);
 	}
 }
