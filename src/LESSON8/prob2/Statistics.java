@@ -5,10 +5,17 @@ public class Statistics {
 	 * Polymorphically computes and returns the sum
 	 * of all the salaries of all the staff/teachers in the list.
 	 */
-	public static double computeSumOfSalaries(List/*<implement>*/ aList) {
+	public static double computeSumOfSalaries(List<EmployeeData> aList) {
 
-		return 0.0;
+		double  sum = 0.0;
+		for(EmployeeData emp  : aList){
+			if(emp != null){
+				sum += emp.getSalary();
+			}
+		}
+		return sum;
 		//implement
+
 		//compute sum of all salaries of people in aList and return
 	}
 }
