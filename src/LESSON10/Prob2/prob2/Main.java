@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class Main {
 
-	@SuppressWarnings("serial")
+	//@SuppressWarnings("serial")
 	public static void main(String[] args) {
 		List<String> ssns = Arrays.asList("234121244", 
 				                          "113145657",
@@ -33,6 +33,9 @@ public class Main {
 											
 		List<Employee> report = EmployeeAdmin.prepareReport(h, ssns);
 		System.out.println(report);
+		/*for(Employee e : report){
+			System.out.println(e);
+		}*/
 									
 		//Expected output:
 		//[(113145657: Rick, 92000), (212341557: Hank, 110000), (342892138: Ibu, 100000), (523421589: Tom, 88000)]

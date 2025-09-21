@@ -1,5 +1,7 @@
 package LESSON10.Prob2.prob2;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -13,8 +15,17 @@ public class EmployeeAdmin {
 	*/
 	public static List<Employee> prepareReport(HashMap<String, Employee> table, List<String> socSecNums) {
 		//IMPLEMENT
-		return null;
-		
+		List<Employee> ls = new ArrayList<>();
+		for (Employee em : table.values()) {
+			if (socSecNums.contains(em.getSsn()) && em.getSalary() > 80000) {
+				ls.add(em);
+
+			}
+		}
+		ls.sort((s1, s2) -> s1.getSsn().compareTo(s2.getSsn()));
+		return ls;
+
+
 	}
 	
 }
