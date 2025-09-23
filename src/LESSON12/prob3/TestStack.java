@@ -1,5 +1,7 @@
 package LESSON12.prob3;
 
+import java.util.EmptyStackException;
+
 public class TestStack {
     public static void main(String[] args) {
         MyStack stack = new MyStack(3);
@@ -16,11 +18,34 @@ public class TestStack {
         System.out.println("After pop, peek: " + stack.peek());
         System.out.println("Stack: " + stack);
 
-        // Uncomment later when exceptions are implemented
-        // stack.push(40);            // should cause overflow
-        // stack.push(null);          // should cause null not allowed
-        // stack.pop(); stack.pop();  // empty now
-        // stack.pop();               // should cause underflow
-        // stack.peek();              // should cause underflow
+        try {
+            stack.push(40);
+            stack.push(70);
+        }catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            stack.push(null);
+        }catch (NullPointerException e){
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            stack.pop();
+            stack.pop();
+            stack.pop();
+            stack.pop();
+        }catch (EmptyStackException e){
+            System.out.println("can't pop, Stack is empty");
+        }
+
+        try{
+            stack.peek();
+        } catch (EmptyStackException e){
+            System.out.println("can't peek, Stack is empty");
+        }
+
     }
 }
+

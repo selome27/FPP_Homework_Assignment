@@ -1,5 +1,7 @@
 package LESSON12.prob3;
 
+import java.util.EmptyStackException;
+
 public class MyStack {
     private Integer[] data;
     private int top;
@@ -13,12 +15,20 @@ public class MyStack {
 
     // Push element to stack (no checks yet)
     public void push(Integer item) {
-        top++;
-        data[top] = item;
+        if(item == null){
+            throw new NullPointerException("Null values aren't allowed");
+        }
+        if(isFull()){
+            throw new IllegalArgumentException("Stack is full. can't push");
+        }
+        data[++top] = item;
     }
 
     // Pop element from stack (no checks yet)
     public Integer pop() {
+        if(isEmpty()){
+            throw new EmptyStackException();
+        }
         Integer item = data[top];
         top--;
         return item;
@@ -26,6 +36,9 @@ public class MyStack {
 
     // Peek top element (no checks yet)
     public Integer peek() {
+        if(isEmpty()){
+            throw new EmptyStackException();
+        }
         return data[top];
     }
 
@@ -53,3 +66,4 @@ public class MyStack {
         return sb.toString();
     }
 }
+
