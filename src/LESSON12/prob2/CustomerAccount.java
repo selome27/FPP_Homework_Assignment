@@ -1,5 +1,7 @@
 package LESSON12.prob2;
+
 public class CustomerAccount {
+
     private String cusName;
     private String accNo;
     private double balance;
@@ -10,22 +12,25 @@ public class CustomerAccount {
         this.balance = balance;
     }
 
-    public boolean deposit(double amount) {
-        if (amount > 0) {
-            balance += amount;
-            return true;
+    public void deposit(double amount) {
+        if( amount <= 0){
+            throw new IllegalArgumentException("Deposit amount must be positive ");
         }
-        return false;
+        balance += amount;
+        System.out.println("Deposited amount: $" + amount);
     }
 
-    public boolean withdraw(double amount) {
-        if (amount > 0 && amount <= balance) {
-            balance -= amount;
-            return true;
+    public void withdraw(double amount) {
+        if(amount > balance){
+            throw new AccountException("Insufficient funds! Withdrawal amount exceeds balance.");
         }
-        return false;
-    }
+        if(balance - amount < 100){
+            throw new AccountException("Low balance warning! Balance can't go below $100");
+        }
+        balance-= amount;
+        System.out.println("Withdraw: $" + amount + "  New balance: $" + balance);
 
+    }
     public double getBalance() {
         return balance;
     }
